@@ -69,7 +69,9 @@ class _EditItemState extends State<EditItem> {
                           width: 10,
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
                           icon: Icon(
                             Icons.arrow_back,
                             size: 30,

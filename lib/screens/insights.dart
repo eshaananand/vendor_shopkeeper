@@ -103,7 +103,9 @@ class _InsightsState extends State<Insights> {
                           width: 10,
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
                           icon: Icon(
                             Icons.arrow_back,
                             color: Colors.red,

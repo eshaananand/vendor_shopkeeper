@@ -65,7 +65,9 @@ class _ChooseImageState extends State<ChooseImage> {
                       width: 10,
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       icon: Icon(
                         Icons.arrow_back,
                         size: 30,

@@ -119,7 +119,9 @@ class _OrderDetailsState extends State<OrderDetails> {
                             width: 10,
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
                             icon: Icon(
                               Icons.arrow_back,
                               size: 30,

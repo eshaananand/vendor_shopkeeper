@@ -110,16 +110,10 @@ class MyAccount extends StatelessWidget {
                     children: [
                       SizedBox(
                         width: 10,
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: Colors.red,
-                        ),
+                        height: 50,
                       ),
                       Text(
-                        "My Account",
+                        "  My Account",
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.red,

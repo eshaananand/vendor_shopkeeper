@@ -81,9 +81,6 @@ class _AuthState extends State<Auth> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 50,
-                  ),
                   Padding(
                     padding: const EdgeInsets.all(25.0),
                     child: Column(

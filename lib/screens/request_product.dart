@@ -65,7 +65,9 @@ class _RequestProductState extends State<RequestProduct> {
                           width: 10,
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
                           icon: Icon(
                             Icons.arrow_back,
                             size: 30,

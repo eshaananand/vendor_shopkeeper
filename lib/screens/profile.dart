@@ -51,9 +51,12 @@ class Profile extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Icon(
-                      Icons.arrow_back,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back),
                       color: Colors.white,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                     ),
                   ),
                   Center(

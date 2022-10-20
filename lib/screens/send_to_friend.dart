@@ -25,10 +25,9 @@ class _SendFriendsState extends State<SendFriends> {
 
     List<String> freindsImage = [
       "assets/friend_profile.png",
-      "assets/friend_profile.png"
     ];
-    List<String> name = ["Swati Verma", "Sayanee Sur"];
-    List<String> number = ["+91 82104444484", "+91 6290495280"];
+    List<String> name = ["Swati Verma"];
+    List<String> number = ["+91 82104444484"];
 
     return SafeArea(
       child: Scaffold(
@@ -55,7 +54,9 @@ class _SendFriendsState extends State<SendFriends> {
                         width: 10,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                         icon: Icon(
                           Icons.arrow_back,
                           size: 30,
