@@ -1,15 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:vendor_shopkeeper/screens/otp.dart';
 
 class LoginPage2 extends StatelessWidget {
-  const LoginPage2({Key? key}) : super(key: key);
+  LoginPage2({Key? key}) : super(key: key);
 
+  TextEditingController referralCode = TextEditingController();
+  TextEditingController numberController = TextEditingController();
+
+  void login(String number) async {
+    print("login $number");
+    try {
+      Response response = await post(
+        Uri.parse('http://localhost:3001/v/sendOTP'),
+        body: {'number': number},
+      );
+
+      print("response: $response");
+
+      if (response.statusCode == 200) {
+        print("OTP Sent successfully");
+      } else {
+        print("Login failed");
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
+      // ignore: sized_box_for_whitespace
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
@@ -23,10 +47,10 @@ class LoginPage2 extends StatelessWidget {
                   Center(
                     child: Column(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           height: 80,
                         ),
-                        Text(
+                        const Text(
                           "Log In",
                           style: TextStyle(
                             color: Colors.red,
@@ -34,10 +58,10 @@ class LoginPage2 extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text(
+                        const Text(
                           "Log in with one of the following options",
                           style: TextStyle(
                             fontSize: 15,
@@ -45,7 +69,7 @@ class LoginPage2 extends StatelessWidget {
                           ),
                         ),
                         Row(
-                          children: <Widget>[
+                          children: const <Widget>[
                             SizedBox(
                               width: 150,
                             ),
@@ -64,20 +88,22 @@ class LoginPage2 extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
+                      // ignore: todo
                       // TODO: mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        Text(
-                          "Phone No.:",
+                        const Text(
+                          "Phone No. :",
                           style: TextStyle(color: Colors.red, fontSize: 15),
                         ),
                         TextFormField(
+                           controller: numberController,
                           validator: (value) =>
                               value!.isEmpty ? 'Enter your phone number' : null,
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.only(
+                              contentPadding: const EdgeInsets.only(
                                   left: 15, bottom: 11, top: 11, right: 15),
                               hintText: "Enter your phone number",
                               focusedBorder: OutlineInputBorder(
@@ -86,15 +112,15 @@ class LoginPage2 extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
+                                borderSide: const BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(25.0),
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20.0,
                           height: 20.0,
                         ),
-                        Text(
+                        const Text(
                           "Referral Code:",
                           style: TextStyle(color: Colors.red, fontSize: 15),
                         ),
@@ -102,9 +128,9 @@ class LoginPage2 extends StatelessWidget {
                           validator: (value) => value!.isEmpty
                               ? 'Enter your referral code'
                               : null,
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.only(
+                              contentPadding: const EdgeInsets.only(
                                   left: 15, bottom: 11, top: 11, right: 15),
                               hintText: "Enter your referral code",
                               focusedBorder: OutlineInputBorder(
@@ -113,7 +139,7 @@ class LoginPage2 extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
+                                borderSide: const BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(25.0),
                               )),
                         ),
@@ -121,22 +147,26 @@ class LoginPage2 extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Container(
                       child: MaterialButton(
                         //minWidth: double.infinity,
                         height: 60,
                         minWidth: 150,
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Otp()));
+                          login(numberController.text.toString());
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      Otp(number: numberController.text.toString())));
                         },
                         color: Colors.red,
                         elevation: 5,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
-                        child: Text(
+                        child: const Text(
                           "Continue",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -150,7 +180,7 @@ class LoginPage2 extends StatelessWidget {
                   Container(
                     // padding: EdgeInsets.only(top: 50),
                     height: 300,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         image: DecorationImage(
                       image: AssetImage("assets/login in.png"),
                     )),

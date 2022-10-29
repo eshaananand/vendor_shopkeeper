@@ -96,7 +96,9 @@ class _QrScanState extends State<QrScan> {
                     Container(
                       height: 150,
                       child: Center(
-                        child: Text("Qr code here"),
+                        child: Image.asset(
+                          "assets/qr1.png",
+                        ),
                       ),
                     ),
                   ],

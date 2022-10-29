@@ -1,15 +1,38 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:vendor_shopkeeper/screens/auth.dart';
 
-import 'auth.dart';
+class Otp extends StatelessWidget {
+  // Otp({Key? key}) : super(key: key);
+  String number;
+  Otp({required this.number});
+  TextEditingController otp = TextEditingController();
 
-class Otp extends StatefulWidget {
-  const Otp({Key? key}) : super(key: key);
+  void verify(String otp, number) async {
+    try {
+      Response response = await post(
+        Uri.parse('http://localhost:3001/v/verifyOTP'),
+        body: {
+          'number': number,
+          'otp': otp,
+        },
+      );
 
-  @override
-  State<Otp> createState() => _OtpState();
-}
+      // print(jsonDecode(response.body.toString()));
+      //output: {message: Success!, 
+      //token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjY4Nzc5NDd9.SlpQ5gniHxdTYHj1QgM5_7KKj7JXNWkeCRUq4VSY9GE}
 
-class _OtpState extends State<Otp> {
+      if (response.statusCode == 200) {
+        print("verifed!");
+      } else {
+        print("Login failed");
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,10 +43,11 @@ class _OtpState extends State<Otp> {
           color: Colors.red,
           child: InkWell(
             onTap: () {
+              verify(otp.text.toString(), number);
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Auth()));
+                  context, MaterialPageRoute(builder: (context) => const Auth()));
             },
-            child: SizedBox(
+            child: const SizedBox(
               height: kToolbarHeight,
               width: double.infinity,
               child: Center(
@@ -47,7 +71,7 @@ class _OtpState extends State<Otp> {
               crossAxisAlignment: CrossAxisAlignment.start,
               //mainAxisAlignment: MainAxisAlignment.spaceBe,
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Container(
@@ -62,13 +86,13 @@ class _OtpState extends State<Otp> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_back,
                           size: 20,
                           color: Colors.red,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "Verify your contact number",
                         style: TextStyle(
                           fontSize: 18,
@@ -79,10 +103,10 @@ class _OtpState extends State<Otp> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(20.0),
                   child: Text(
-                    "Enter the verification Code , We've sent on the given number",
-                    style: TextStyle(color: Colors.black, fontSize: 15),
+                    "Enter the verification Code , We've sent on the $number",
+                    style: const TextStyle(color: Colors.black, fontSize: 15),
                   ),
                 ),
                 Padding(
@@ -96,9 +120,9 @@ class _OtpState extends State<Otp> {
                         border: Border.all(color: Colors.black)),
                     child: Padding(
                       padding: const EdgeInsets.only(top: 15, left: 15),
-                      child: Text(
-                        "4567899",
-                        style: TextStyle(
+                      child: TextFormField(
+                        controller: otp,
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Colors.red,
                         ),
@@ -106,8 +130,8 @@ class _OtpState extends State<Otp> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
+                const Padding(
+                  padding: EdgeInsets.all(20.0),
                   child: Text(
                     "Resend",
                     style: TextStyle(
@@ -116,7 +140,7 @@ class _OtpState extends State<Otp> {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: const EdgeInsets.only(top: 0, left: 20),
                   child: Text(
                     "Valid till 20 sec",
