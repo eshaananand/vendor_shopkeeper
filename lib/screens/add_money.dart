@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:vendor_shopkeeper/screens/payment_successful.dart';
 import 'package:vendor_shopkeeper/screens/selectPayment.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class AddMoney extends StatefulWidget {
   AddMoney({Key? key}) : super(key: key);
@@ -19,6 +21,35 @@ class _AddMoneyState extends State<AddMoney> {
 
   double w(double width) {
     return MediaQuery.of(context).size.width * width;
+  }
+
+  TextEditingController amountController = TextEditingController();
+  // ignore: prefer_typing_uninitialized_variables
+  late var _razorpay;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _razorpay = Razorpay();
+      _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+      _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+      _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    });
+    super.initState();
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    // Do something when payment succeeds
+    print("Payment Done");
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    // Do something when payment fails
+    print("Payment Failed");
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    // Do something when an external wallet is selected
   }
 
   @override
@@ -72,7 +103,7 @@ class _AddMoneyState extends State<AddMoney> {
               ),
               Container(
                 // height: h(0.8),
-                width: w(1),
+                width: 500,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   // crossAxisAlignment: CrossAxisAlignment.center,
@@ -86,6 +117,9 @@ class _AddMoneyState extends State<AddMoney> {
                       "Enter Amount to be \nadded in the wallet",
                       style: TextStyle(fontSize: 25),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
                     // Padding(
                     //   padding: EdgeInsets.only(top: 30.0, bottom: 30),
                     //   child: Text(
@@ -96,85 +130,51 @@ class _AddMoneyState extends State<AddMoney> {
                     //         fontWeight: FontWeight.bold),
                     //   ),
                     // ),
-                    Container(
-                      width: w(0.3),
-                      child: TextFormField(
-                        style: TextStyle(
+                    TextFormField(
+                      controller: amountController,
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      keyboardType: TextInputType.number,
+                      textAlignVertical: TextAlignVertical.center,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        // border: InputBorder.none,
+                        hintText: "500",
+                        hintStyle: TextStyle(
                           fontSize: 30,
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
                         ),
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Rs 500",
-                          hintStyle: TextStyle(
-                            fontSize: 30,
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 50,
                     ),
                     InkWell(
                       onTap: () {
-                        pushNewScreen(
-                          context,
-                          screen: SelectPayment(
-                            onCashOnDeliveryTap: () {
-                              pushNewScreen(
-                                context,
-                                screen: PaymentSuccessful(
-                                  text: "Money Added\nSuccessfully",
-                                ),
-                              );
-                            },
-                            onCreditCardTap: () {
-                              pushNewScreen(
-                                context,
-                                screen: PaymentSuccessful(
-                                  text: "Money Added\nSuccessfully",
-                                ),
-                              );
-                            },
-                            onDebitCardTap: () {
-                              pushNewScreen(
-                                context,
-                                screen: PaymentSuccessful(
-                                  text: "Money Added\nSuccessfully",
-                                ),
-                              );
-                            },
-                            onRazorPayTap: () {
-                              pushNewScreen(
-                                context,
-                                screen: PaymentSuccessful(
-                                  text: "Money Added\nSuccessfully",
-                                ),
-                              );
-                            },
-                            onStripeTap: () {
-                              pushNewScreen(
-                                context,
-                                screen: PaymentSuccessful(
-                                  text: "Money Added\nSuccessfully",
-                                ),
-                              );
-                            },
-                            onWalletTap: () {
-                              pushNewScreen(
-                                context,
-                                screen: PaymentSuccessful(
-                                  text: "Money Added\nSuccessfully",
-                                ),
-                              );
-                            },
-                          ),
-                        );
+                        //Make payment
+                        var options = {
+                          'key': "rzp_test_iOJtCiZpmrpqEj",
+                          // amount will be multiple of 100
+                          'amount': (int.parse(amountController.text) * 100)
+                              .toString(), //So its pay 500
+                          'name': 'All In One',
+                          'description': 'Add to wallet',
+                          'timeout': 300, // in seconds
+                          'prefill': {
+                            'contact': '8787878787',
+                            'email': 'allinone@gmail.com'
+                          }
+                        };
+                        print(options);
+                        _razorpay.open(options);
                       },
                       child: SizedBox(
-                        height: 60,
-                        width: 170,
+                        height: 50,
+                        width: 150,
                         child: Card(
                           color: Colors.red,
                           elevation: 5,
@@ -200,5 +200,13 @@ class _AddMoneyState extends State<AddMoney> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // ignore: todo
+    // TODO: implement dispose
+    _razorpay.clear();
+    super.dispose();
   }
 }

@@ -20,7 +20,7 @@ class _LoginPage1State extends State<LoginPage1> {
     print("login $number");
     try {
       Response response = await post(
-        Uri.parse('http://localhost:3001/v/sendOTP'),
+        Uri.parse('https://allinonevendor.herokuapp.com/v/sendOTP'),
         body: {'number': number},
       );
 
@@ -28,6 +28,12 @@ class _LoginPage1State extends State<LoginPage1> {
 
       if (response.statusCode == 200) {
         print("OTP Sent successfully");
+        // ignore: use_build_context_synchronously
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    Otp(number: numberController.text.toString())));
       } else {
         print("Login failed");
       }
@@ -153,7 +159,7 @@ class _LoginPage1State extends State<LoginPage1> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                     LoginPage2())),
+                                                    LoginPage2())),
                                     ),
                                     const TextSpan(
                                       text: ' Code ? ',
@@ -176,11 +182,6 @@ class _LoginPage1State extends State<LoginPage1> {
                         minWidth: 150,
                         onPressed: () {
                           login(numberController.text.toString());
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      Otp(number: numberController.text.toString())));
                         },
                         color: Colors.red,
                         elevation: 5,

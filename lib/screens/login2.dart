@@ -10,14 +10,11 @@ class LoginPage2 extends StatelessWidget {
   TextEditingController numberController = TextEditingController();
 
   void login(String number) async {
-    print("login $number");
     try {
       Response response = await post(
-        Uri.parse('http://localhost:3001/v/sendOTP'),
+        Uri.parse('https://allinonevendor.herokuapp.com/v/sendOTP'),
         body: {'number': number},
       );
-
-      print("response: $response");
 
       if (response.statusCode == 200) {
         print("OTP Sent successfully");
@@ -28,6 +25,7 @@ class LoginPage2 extends StatelessWidget {
       print(e.toString());
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,7 +96,7 @@ class LoginPage2 extends StatelessWidget {
                           style: TextStyle(color: Colors.red, fontSize: 15),
                         ),
                         TextFormField(
-                           controller: numberController,
+                          controller: numberController,
                           validator: (value) =>
                               value!.isEmpty ? 'Enter your phone number' : null,
                           style: const TextStyle(color: Colors.black),
@@ -112,7 +110,8 @@ class LoginPage2 extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.black),
+                                borderSide:
+                                    const BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(25.0),
                               )),
                         ),
@@ -139,7 +138,8 @@ class LoginPage2 extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.black),
+                                borderSide:
+                                    const BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(25.0),
                               )),
                         ),
@@ -158,8 +158,9 @@ class LoginPage2 extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      Otp(number: numberController.text.toString())));
+                                  builder: (context) => Otp(
+                                      number:
+                                          numberController.text.toString())));
                         },
                         color: Colors.red,
                         elevation: 5,
