@@ -74,9 +74,6 @@ class _OtpState extends State<Otp> {
               crossAxisAlignment: CrossAxisAlignment.start,
               //mainAxisAlignment: MainAxisAlignment.spaceBe,
               children: <Widget>[
-                const SizedBox(
-                  height: 50,
-                ),
                 Container(
                   decoration: BoxDecoration(
                     boxShadow: kElevationToShadow[4],
@@ -113,7 +110,7 @@ class _OtpState extends State<Otp> {
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(20.0),
                   child: Container(
                     width: 350,
                     height: 50,
@@ -122,10 +119,10 @@ class _OtpState extends State<Otp> {
                         borderRadius: BorderRadius.circular(25),
                         border: Border.all(color: Colors.black)),
                     child: Padding(
-                      padding:  EdgeInsets.only(top: 15, left: 15),
+                      padding: EdgeInsets.only(top: 15, left: 15),
                       child: TextFormField(
                         controller: otp,
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           color: Colors.red,
                         ),

@@ -26,9 +26,6 @@ class _TrackLocationState extends State<TrackLocation> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 50,
-              ),
               Container(
                 height: h(0.058),
                 decoration: BoxDecoration(
@@ -45,7 +42,9 @@ class _TrackLocationState extends State<TrackLocation> {
                           width: 10,
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
                           icon: Icon(
                             Icons.arrow_back,
                             size: 30,

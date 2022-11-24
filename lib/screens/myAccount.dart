@@ -93,9 +93,6 @@ class MyAccount extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 50,
-            ),
             Container(
               //
               decoration: BoxDecoration(

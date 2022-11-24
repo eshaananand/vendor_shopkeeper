@@ -32,7 +32,8 @@ class _ProductsState extends State<Products> {
     required String name,
     required String price,
     required String weight,
-    required int isItemInStock,
+    required int itemInStock,
+    required int index,
   }) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.12,
@@ -118,42 +119,56 @@ class _ProductsState extends State<Products> {
                         ),
                       ),
                       Spacer(),
-                      isItemInStock == 1
-                          ? Row(
-                              children: [
-                                Text(
-                                  "In Stock",
-                                  style: TextStyle(
-                                    fontSize: 12,
+                      isItemInStock[index] == 1
+                          ? InkWell(
+                              onTap: () {
+                                setState(() {
+                                  isItemInStock[index] = 0;
+                                });
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "In Stock",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  Padding(padding: EdgeInsets.only(left: 5)),
+                                  Icon(
+                                    Icons.circle,
                                     color: Colors.red,
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 5)),
-                                Icon(
-                                  Icons.circle,
-                                  color: Colors.red,
-                                  size: 12,
-                                )
-                              ],
+                                    size: 12,
+                                  )
+                                ],
+                              ),
                             )
-                          : Row(
-                              children: [
-                                Text(
-                                  "Out of Stock",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey,
+                          : InkWell(
+                              onTap: () {
+                                setState(() {
+                                  isItemInStock[index] = 1;
+                                });
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Out of Stock",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey,
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 5),
-                                ),
-                                Icon(
-                                  Icons.circle,
-                                  color: Colors.grey,
-                                  size: 12,
-                                )
-                              ],
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 5),
+                                  ),
+                                  Icon(
+                                    Icons.circle,
+                                    color: Colors.grey,
+                                    size: 12,
+                                  )
+                                ],
+                              ),
                             ),
                     ],
                   ),
@@ -192,9 +207,6 @@ class _ProductsState extends State<Products> {
               }),
           body: Column(
             children: [
-              SizedBox(
-                height: 50,
-              ),
               Container(
                 height: h(0.058),
                 decoration: BoxDecoration(
@@ -311,7 +323,8 @@ class _ProductsState extends State<Products> {
                                               withNavBar: false,
                                             );
                                           },
-                                          isItemInStock: isItemInStock[index],
+                                          index: index,
+                                          itemInStock: isItemInStock[index],
                                           image: image[index],
                                           name: name[index],
                                           price: price[index],

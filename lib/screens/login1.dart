@@ -91,10 +91,7 @@ class _LoginPage1State extends State<LoginPage1> {
                               color: Colors.blue,
                               size: 50,
                             ),
-                            Icon(
-                              Icons.g_mobiledata,
-                              size: 50,
-                            ),
+                            Image.asset("assets/google.png"),
                           ],
                         )
                       ],
@@ -104,11 +101,14 @@ class _LoginPage1State extends State<LoginPage1> {
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      //crossAxisAlignment: ,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         const Text(
                           "Phone No. :",
                           style: TextStyle(color: Colors.red, fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
                         ),
                         TextFormField(
                           controller: numberController,

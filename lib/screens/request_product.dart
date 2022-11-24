@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 class RequestProduct extends StatefulWidget {
   RequestProduct({Key? key}) : super(key: key);
@@ -46,9 +45,6 @@ class _RequestProductState extends State<RequestProduct> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 50,
-              ),
               Container(
                 height: h(0.058),
                 decoration: BoxDecoration(
@@ -102,6 +98,9 @@ class _RequestProductState extends State<RequestProduct> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     TextFormField(
                       decoration: InputDecoration(
                         hintText: "Enter name of the item",
@@ -119,6 +118,9 @@ class _RequestProductState extends State<RequestProduct> {
                           fontSize: 20,
                         ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     SizedBox(
                       width: w(1),
@@ -143,6 +145,9 @@ class _RequestProductState extends State<RequestProduct> {
                           fontSize: 20,
                         ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     SizedBox(
                       width: w(0.4),

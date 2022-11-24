@@ -49,9 +49,6 @@ class _AuthState extends State<Auth> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 //mainAxisAlignment: MainAxisAlignment.spaceBe,
                 children: <Widget>[
-                  SizedBox(
-                    height: 50,
-                  ),
                   Container(
                     decoration: BoxDecoration(
                       boxShadow: kElevationToShadow[4],
@@ -112,7 +109,7 @@ class _AuthState extends State<Auth> {
                               )),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                         Text(
                           "Last Name:",
@@ -140,7 +137,7 @@ class _AuthState extends State<Auth> {
                               )),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                         Text(
                           "E-mail:",

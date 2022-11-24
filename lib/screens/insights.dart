@@ -84,9 +84,6 @@ class _InsightsState extends State<Insights> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 50,
-              ),
               Container(
                 //
                 decoration: BoxDecoration(

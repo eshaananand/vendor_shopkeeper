@@ -7,6 +7,7 @@ import 'package:vendor_shopkeeper/screens/myOrders.dart';
 import 'package:vendor_shopkeeper/screens/my_earning.dart';
 import 'package:vendor_shopkeeper/screens/order_details.dart';
 import 'package:vendor_shopkeeper/screens/payment_successful.dart';
+import 'package:vendor_shopkeeper/screens/products.dart';
 import 'package:vendor_shopkeeper/screens/reviews.dart';
 import 'package:vendor_shopkeeper/screens/wallet.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       home: LoginPage1(),
-      // home: MyEarning(),
+      // home: Products(),
     );
   }
 }

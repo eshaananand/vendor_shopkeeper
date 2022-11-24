@@ -66,9 +66,6 @@ class _LocationState extends State<Location> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 50,
-            ),
             Container(
               decoration: BoxDecoration(
                 boxShadow: kElevationToShadow[4],
@@ -78,7 +75,9 @@ class _LocationState extends State<Location> {
               child: Row(
                 children: <Widget>[
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     icon: Icon(
                       Icons.arrow_back,
                       size: 20,

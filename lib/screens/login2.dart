@@ -67,19 +67,16 @@ class LoginPage2 extends StatelessWidget {
                           ),
                         ),
                         Row(
-                          children: const <Widget>[
-                            SizedBox(
+                          children: <Widget>[
+                            const SizedBox(
                               width: 150,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.facebook,
                               color: Colors.blue,
                               size: 50,
                             ),
-                            Icon(
-                              Icons.g_mobiledata,
-                              size: 50,
-                            ),
+                            Image.asset("assets/google.png")
                           ],
                         )
                       ],
@@ -92,7 +89,7 @@ class LoginPage2 extends StatelessWidget {
                       // TODO: mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         const Text(
-                          "Phone No. :",
+                          "Phone No.:",
                           style: TextStyle(color: Colors.red, fontSize: 15),
                         ),
                         TextFormField(
