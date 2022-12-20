@@ -118,10 +118,10 @@ class Support extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "  CONTACT NUMBER",
+                                    "  Contact Number",
                                     style: TextStyle(
                                       fontSize: 20,
-                                      fontWeight: FontWeight.w300,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Padding(
@@ -129,7 +129,8 @@ class Support extends StatelessWidget {
                                     child: Text(
                                       "  +91 123456890",
                                       style: TextStyle(
-                                        color: Colors.grey,
+                                        color:
+                                            Color.fromARGB(255, 102, 102, 102),
                                       ),
                                     ),
                                   )
@@ -153,10 +154,10 @@ class Support extends StatelessWidget {
                                           color: Colors.red),
                                     ),
                                     Text(
-                                      "  YOUR MESSAGE",
+                                      "  Your Message",
                                       style: TextStyle(
                                         fontSize: 20,
-                                        fontWeight: FontWeight.w300,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ],

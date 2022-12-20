@@ -51,7 +51,7 @@ class _EditItemState extends State<EditItem> {
           child: Column(
             children: [
               SizedBox(
-                height: 50,
+                height: 20,
               ),
               Container(
                 height: h(0.058),
@@ -106,6 +106,9 @@ class _EditItemState extends State<EditItem> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 5,
+                    ),
                     TextFormField(
                       decoration: InputDecoration(
                         hintText: widget.name,
@@ -129,6 +132,9 @@ class _EditItemState extends State<EditItem> {
                                   fontSize: 20,
                                 ),
                               ),
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             SizedBox(
                               width: 160,
@@ -155,6 +161,9 @@ class _EditItemState extends State<EditItem> {
                                   fontSize: 20,
                                 ),
                               ),
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             SizedBox(
                               width: 160,

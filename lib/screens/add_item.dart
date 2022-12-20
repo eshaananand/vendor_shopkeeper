@@ -102,6 +102,9 @@ class _AddItemState extends State<AddItem> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 5,
+                    ),
                     TextFormField(
                       decoration: InputDecoration(
                         hintText: "Enter the name of the item",
@@ -125,6 +128,9 @@ class _AddItemState extends State<AddItem> {
                                   fontSize: 20,
                                 ),
                               ),
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             SizedBox(
                               width: 160,
@@ -151,6 +157,9 @@ class _AddItemState extends State<AddItem> {
                                   fontSize: 20,
                                 ),
                               ),
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             SizedBox(
                               width: 160,

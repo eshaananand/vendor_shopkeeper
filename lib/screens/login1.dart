@@ -82,7 +82,7 @@ class _LoginPage1State extends State<LoginPage1> {
                           ),
                         ),
                         Row(
-                          children: const <Widget>[
+                          children: <Widget>[
                             SizedBox(
                               width: 150,
                             ),
@@ -181,7 +181,11 @@ class _LoginPage1State extends State<LoginPage1> {
                         height: 60,
                         minWidth: 150,
                         onPressed: () {
-                          login(numberController.text.toString());
+                          // login(numberController.text.toString());
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Otp(number: "1234")));
                         },
                         color: Colors.red,
                         elevation: 5,

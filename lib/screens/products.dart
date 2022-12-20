@@ -220,7 +220,7 @@ class _ProductsState extends State<Products> {
                     Text(
                       "My Products",
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 22,
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
                       ),

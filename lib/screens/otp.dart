@@ -48,7 +48,9 @@ class _OtpState extends State<Otp> {
           color: Colors.red,
           child: InkWell(
             onTap: () {
-              verify(otp.text.toString(), widget.number);
+              // verify(otp.text.toString(), widget.number);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Auth()));
             },
             child: const SizedBox(
               height: kToolbarHeight,
