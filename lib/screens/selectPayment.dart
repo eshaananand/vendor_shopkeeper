@@ -66,100 +66,105 @@ class SelectPayment extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              height: h(0.058),
-              decoration: BoxDecoration(
-                boxShadow: kElevationToShadow[4],
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 20,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 10,
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          size: 30,
-                          color: Colors.red,
+              Container(
+                height: h(0.058),
+                decoration: BoxDecoration(
+                  boxShadow: kElevationToShadow[4],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
                         ),
-                      ),
-                      Text(
-                        "Select Payment",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.red,
+                        IconButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            size: 30,
+                            color: Colors.red,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              width: w(1),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Amount to pay Rs 200",
-                      style: TextStyle(
-                        color: Colors.black.withOpacity(0.68),
-                      ),
+                        Text(
+                          "Select Payment",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ],
                     ),
-                    paymetType(
-                        image: "wallet.png",
-                        name: "Wallet",
-                        onTap: onWalletTap),
-                    Padding(
-                      padding: EdgeInsets.only(top: 25.0),
-                      child: Text("CARDS"),
-                    ),
-                    paymetType(
-                        image: "debitCard.png",
-                        name: "Debit Card",
-                        onTap: onDebitCardTap),
-                    paymetType(
-                        image: "debitCard.png",
-                        name: "Credit Card",
-                        onTap: onCreditCardTap),
-                    Padding(
-                      padding: EdgeInsets.only(top: 25.0),
-                      child: Text("CASH"),
-                    ),
-                    paymetType(
-                        image: "cod.png",
-                        name: "Cash on Delivery",
-                        onTap: onCashOnDeliveryTap),
-                    Padding(
-                      padding: EdgeInsets.only(top: 25.0),
-                      child: Text("OTHERS"),
-                    ),
-                    paymetType(
-                        image: "razorPay.png",
-                        name: "RazorPay",
-                        onTap: onRazorPayTap),
-                    paymetType(
-                        image: "stripe.png",
-                        name: "Stripe",
-                        onTap: onStripeTap),
                   ],
                 ),
               ),
-            )
-          ],
+              SizedBox(
+                width: w(1),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Amount to pay Rs 200",
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(0.68),
+                        ),
+                      ),
+                      paymetType(
+                          image: "wallet.png",
+                          name: "Wallet",
+                          onTap: onWalletTap),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.0),
+                        child: Text("CARDS"),
+                      ),
+                      paymetType(
+                          image: "debitCard.png",
+                          name: "Debit Card",
+                          onTap: onDebitCardTap),
+                      paymetType(
+                          image: "debitCard.png",
+                          name: "Credit Card",
+                          onTap: onCreditCardTap),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.0),
+                        child: Text("CASH"),
+                      ),
+                      paymetType(
+                          image: "cod.png",
+                          name: "Cash on Delivery",
+                          onTap: onCashOnDeliveryTap),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.0),
+                        child: Text("OTHERS"),
+                      ),
+                      paymetType(
+                          image: "razorPay.png",
+                          name: "RazorPay",
+                          onTap: onRazorPayTap),
+                      paymetType(
+                          image: "stripe.png",
+                          name: "Stripe",
+                          onTap: onStripeTap),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

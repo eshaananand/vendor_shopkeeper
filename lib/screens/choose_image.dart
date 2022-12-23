@@ -42,124 +42,129 @@ class _ChooseImageState extends State<ChooseImage> {
 
     return SafeArea(
       child: Scaffold(
-          body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: h(0.058),
-            decoration: BoxDecoration(
-              boxShadow: kElevationToShadow[4],
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(25),
+          body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: Icon(
-                        Icons.arrow_back,
-                        size: 30,
-                        color: Colors.red,
-                      ),
-                    ),
-                    Text(
-                      "Choose Image",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Column(
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: TextFormField(
-                    controller: searchController,
-                    style: TextStyle(fontSize: 16.0),
-                    decoration: InputDecoration(
-                      contentPadding:
-                          const EdgeInsets.symmetric(vertical: 14.0),
-                      border: InputBorder.none,
-                      hintText: "Search item",
-                      fillColor: HexColor("D9D9D9"),
-                      filled: true,
-                      prefixIcon: IconButton(
-                        icon: Icon(Icons.search),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ),
+            Container(
+              height: h(0.058),
+              decoration: BoxDecoration(
+                boxShadow: kElevationToShadow[4],
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(25),
               ),
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: h(0.5),
-                  maxWidth: w(0.9),
-                ),
-                child: MediaQuery.removePadding(
-                  context: context,
-                  removeTop: true,
-                  child: GridView.builder(
-                    physics: ScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      childAspectRatio: 5 / 4,
-                    ),
-                    itemCount: images.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Card(
-                          elevation: 5,
-                          child: Image.asset("assets/${images[index]}"),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 40.0, left: 20),
-                child: GestureDetector(
-                  onTap: () {
-                    pushNewScreen(context,
-                        screen: RequestProduct(), withNavBar: false);
-                  },
-                  child: Row(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
                     children: [
-                      Icon(Icons.add_circle_outlined, color: Colors.red),
-                      Padding(
-                        padding: EdgeInsets.only(left: 12.0),
-                        child: Text(
-                          "Request a new Product Image",
-                          style: TextStyle(color: Colors.red, fontSize: 17),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: 30,
+                          color: Colors.red,
+                        ),
+                      ),
+                      Text(
+                        "Choose Image",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.red,
                         ),
                       ),
                     ],
                   ),
-                ),
+                ],
               ),
-            ],
-          )
-        ],
+            ),
+            Column(
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: TextFormField(
+                      controller: searchController,
+                      style: TextStyle(fontSize: 16.0),
+                      decoration: InputDecoration(
+                        contentPadding:
+                            const EdgeInsets.symmetric(vertical: 14.0),
+                        border: InputBorder.none,
+                        hintText: "Search item",
+                        fillColor: HexColor("D9D9D9"),
+                        filled: true,
+                        prefixIcon: IconButton(
+                          icon: Icon(Icons.search),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: h(0.5),
+                    maxWidth: w(0.9),
+                  ),
+                  child: MediaQuery.removePadding(
+                    context: context,
+                    removeTop: true,
+                    child: GridView.builder(
+                      physics: ScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        childAspectRatio: 5 / 4,
+                      ),
+                      itemCount: images.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Card(
+                            elevation: 5,
+                            child: Image.asset("assets/${images[index]}"),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 40.0, left: 20),
+                  child: GestureDetector(
+                    onTap: () {
+                      pushNewScreen(context,
+                          screen: RequestProduct(), withNavBar: false);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.add_circle_outlined, color: Colors.red),
+                        Padding(
+                          padding: EdgeInsets.only(left: 12.0),
+                          child: Text(
+                            "Request a new Product Image",
+                            style: TextStyle(color: Colors.red, fontSize: 17),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       )),
     );
   }

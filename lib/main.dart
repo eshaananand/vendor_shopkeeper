@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vendor_shopkeeper/persistentNavBar.dart';
+import 'package:vendor_shopkeeper/screens/adminVerify.dart';
 import 'package:vendor_shopkeeper/screens/delivered_successfully.dart';
 import 'package:vendor_shopkeeper/screens/login1.dart';
 import 'package:vendor_shopkeeper/screens/myAccount.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       home: LoginPage1(),
-      // home: Products(),
+      // home: AdminVerify(),
     );
   }
 }

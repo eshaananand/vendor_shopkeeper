@@ -49,6 +49,9 @@ class _AddItemState extends State<AddItem> {
         body: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 height: h(0.058),
                 decoration: BoxDecoration(

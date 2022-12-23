@@ -49,6 +49,9 @@ class _AuthState extends State<Auth> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 //mainAxisAlignment: MainAxisAlignment.spaceBe,
                 children: <Widget>[
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       boxShadow: kElevationToShadow[4],

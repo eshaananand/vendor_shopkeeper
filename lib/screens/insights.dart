@@ -84,8 +84,10 @@ class _InsightsState extends State<Insights> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 20,
+              ),
               Container(
-                //
                 decoration: BoxDecoration(
                   boxShadow: kElevationToShadow[4],
                   color: Colors.white,

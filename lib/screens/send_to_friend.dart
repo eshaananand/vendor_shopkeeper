@@ -31,94 +31,101 @@ class _SendFriendsState extends State<SendFriends> {
 
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              height: h(0.058),
-              decoration: BoxDecoration(
-                boxShadow: kElevationToShadow[4],
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 20,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 10,
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          size: 30,
-                          color: Colors.red,
+              Container(
+                height: h(0.058),
+                decoration: BoxDecoration(
+                  boxShadow: kElevationToShadow[4],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
                         ),
-                      ),
-                      Text(
-                        "Send to Friends",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.red,
+                        IconButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            size: 30,
+                            color: Colors.red,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        Text(
+                          "Send to Friends",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: w(0.06), vertical: 20),
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: w(0.06), vertical: 20),
 
-              // height: 40,
-              // borderRadius: BorderRadius.circular(10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: TextFormField(
-                  // controller: searchController,
-                  style: TextStyle(fontSize: 16.0),
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 14.0),
-                    border: InputBorder.none,
-                    hintText: "Search number ",
-                    fillColor: HexColor("D9D9D9"),
-                    filled: true,
-                    prefixIcon: IconButton(
-                      icon: Icon(Icons.search),
-                      onPressed: () {},
+                // height: 40,
+                // borderRadius: BorderRadius.circular(10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: TextFormField(
+                    // controller: searchController,
+                    style: TextStyle(fontSize: 16.0),
+                    decoration: InputDecoration(
+                      contentPadding:
+                          const EdgeInsets.symmetric(vertical: 14.0),
+                      border: InputBorder.none,
+                      hintText: "Search number ",
+                      fillColor: HexColor("D9D9D9"),
+                      filled: true,
+                      prefixIcon: IconButton(
+                        icon: Icon(Icons.search),
+                        onPressed: () {},
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: ListView.builder(
-                  itemCount: name.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      leading: Image.asset(freindsImage[index]),
-                      title: Text(
-                        name[index],
-                      ),
-                      subtitle: Text(number[index]),
-                      onTap: () {
-                        pushNewScreen(context,
-                            screen: WalletTransfer(
-                              image: freindsImage[index],
-                              name: name[index],
-                              number: number[index],
-                            ));
-                      },
-                    );
-                  }),
-            ),
-          ],
+              Expanded(
+                flex: 1,
+                child: ListView.builder(
+                    itemCount: name.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                        leading: Image.asset(freindsImage[index]),
+                        title: Text(
+                          name[index],
+                        ),
+                        subtitle: Text(number[index]),
+                        onTap: () {
+                          pushNewScreen(context,
+                              screen: WalletTransfer(
+                                image: freindsImage[index],
+                                name: name[index],
+                                number: number[index],
+                              ));
+                        },
+                      );
+                    }),
+              ),
+            ],
+          ),
         ),
       ),
     );

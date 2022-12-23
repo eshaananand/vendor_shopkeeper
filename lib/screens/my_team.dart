@@ -55,7 +55,7 @@ class _MyTeamState extends State<MyTeam> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
                 Container(
                   height: h(0.058),

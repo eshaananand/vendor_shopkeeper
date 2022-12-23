@@ -68,7 +68,7 @@ class _SavedAddressState extends State<SavedAddress> {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height * 0.9,
             width: MediaQuery.of(context).size.width,
             child: Column(
@@ -78,7 +78,7 @@ class _SavedAddressState extends State<SavedAddress> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 50,
+                      height: 20,
                     ),
                     Container(
                       decoration: BoxDecoration(

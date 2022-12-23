@@ -62,86 +62,92 @@ class _LocationState extends State<Location> {
             ),
           ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                boxShadow: kElevationToShadow[4],
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 20,
               ),
-              child: Row(
-                children: <Widget>[
-                  IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
-                      size: 20,
-                      color: Colors.red,
+              Container(
+                decoration: BoxDecoration(
+                  boxShadow: kElevationToShadow[4],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Row(
+                  children: <Widget>[
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: Icon(
+                        Icons.arrow_back,
+                        size: 20,
+                        color: Colors.red,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Set your store location",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.red,
+                    Text(
+                      "Set your store location",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.red,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: w(0.06), vertical: 30),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: TextFormField(
-                  controller: searchController,
-                  //controller: passwordController,
-                  style: TextStyle(fontSize: 16.0),
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: w(0.06), vertical: 30),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: TextFormField(
+                    controller: searchController,
+                    //controller: passwordController,
+                    style: TextStyle(fontSize: 16.0),
 
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Search Location",
-                    fillColor: HexColor("D9D9D9"),
-                    filled: true,
-                    prefixIcon:
-                        IconButton(icon: Icon(Icons.search), onPressed: () {}),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Search Location",
+                      fillColor: HexColor("D9D9D9"),
+                      filled: true,
+                      prefixIcon: IconButton(
+                          icon: Icon(Icons.search), onPressed: () {}),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              height: h(0.53),
-              child: GoogleMap(
-                initialCameraPosition:
-                    CameraPosition(target: source, zoom: 14.5),
+              Container(
+                height: h(0.53),
+                child: GoogleMap(
+                  initialCameraPosition:
+                      CameraPosition(target: source, zoom: 14.5),
+                ),
               ),
-            ),
-            Padding(
-                padding: EdgeInsets.only(left: w(0.05), right: w(0.05)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Icon(
-                          Icons.location_on_outlined,
-                          color: HexColor("FD2E2E"),
-                        ),
-                        Text(
-                          "2/3, SIMS lane, near Sanjitha Maternity",
-                          style: TextStyle(fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                  ],
-                )),
-          ],
+              Padding(
+                  padding: EdgeInsets.only(left: w(0.05), right: w(0.05)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Icon(
+                            Icons.location_on_outlined,
+                            color: HexColor("FD2E2E"),
+                          ),
+                          Text(
+                            "2/3, SIMS lane, near Sanjitha Maternity",
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )),
+            ],
+          ),
         ),
       ),
     );

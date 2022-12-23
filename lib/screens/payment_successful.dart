@@ -49,31 +49,33 @@ class PaymentSuccessful extends StatelessWidget {
             ),
           ),
         ),
-        body: SizedBox(
-          width: w(1),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset("assets/check_mark.png"),
-              Text(
-                text,
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
-              altText != ""
-                  ? Padding(
-                      padding: EdgeInsets.only(top: 12.0),
-                      child: Text(altText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.black.withOpacity(0.67))),
-                    )
-                  : SizedBox.shrink()
-            ],
+        body: SingleChildScrollView(
+          child: SizedBox(
+            width: w(1),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset("assets/check_mark.png"),
+                Text(
+                  text,
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
+                altText != ""
+                    ? Padding(
+                        padding: EdgeInsets.only(top: 12.0),
+                        child: Text(altText,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black.withOpacity(0.67))),
+                      )
+                    : SizedBox.shrink()
+              ],
+            ),
           ),
         ),
       ),

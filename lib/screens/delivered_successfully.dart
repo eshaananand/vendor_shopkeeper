@@ -45,22 +45,24 @@ class DeliveredSuccessful extends StatelessWidget {
             ),
           ),
         ),
-        body: SizedBox(
-          width: w(1),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset("assets/check_mark.png"),
-              Text(
-                "Delivered Successfully",
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
-              Image.asset("assets/deliveryMan.png"),
-            ],
+        body: SingleChildScrollView(
+          child: SizedBox(
+            width: w(1),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset("assets/check_mark.png"),
+                Text(
+                  "Delivered Successfully",
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
+                Image.asset("assets/deliveryMan.png"),
+              ],
+            ),
           ),
         ),
       ),

@@ -19,7 +19,8 @@ class _AdminVerifyState extends State<AdminVerify> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text("You are not yet verified\nPlease wait",
+              Image.asset("assets/Ball-loading.gif"),
+              const Text("Please wait\nYou are not yet verified\n",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.red,

@@ -205,169 +205,174 @@ class _ProductsState extends State<Products> {
                   withNavBar: false,
                 );
               }),
-          body: Column(
-            children: [
-              Container(
-                height: h(0.058),
-                decoration: BoxDecoration(
-                  boxShadow: kElevationToShadow[4],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(25),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "My Products",
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
+                Container(
+                  height: h(0.058),
+                  decoration: BoxDecoration(
+                    boxShadow: kElevationToShadow[4],
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "My Products",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 20),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: TextFormField(
-                        controller: searchController,
-                        style: TextStyle(fontSize: 16.0),
-                        decoration: InputDecoration(
-                          contentPadding:
-                              const EdgeInsets.symmetric(vertical: 14.0),
-                          border: InputBorder.none,
-                          hintText: "Search item",
-                          fillColor: HexColor("D9D9D9"),
-                          filled: true,
-                          prefixIcon: IconButton(
-                            icon: Icon(Icons.search),
-                            onPressed: () {},
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 20),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: TextFormField(
+                          controller: searchController,
+                          style: TextStyle(fontSize: 16.0),
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.symmetric(vertical: 14.0),
+                            border: InputBorder.none,
+                            hintText: "Search item",
+                            fillColor: HexColor("D9D9D9"),
+                            filled: true,
+                            prefixIcon: IconButton(
+                              icon: Icon(Icons.search),
+                              onPressed: () {},
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  DefaultTabController(
-                    length: 4, // length of tabs
-                    initialIndex: 0,
-                    child: SizedBox(
-                      width: w(1),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          Container(
-                            height: 65,
-                            child: TabBar(
-                              isScrollable: true,
-                              indicatorSize: TabBarIndicatorSize.label,
-                              indicatorColor: Colors.red,
-                              labelColor: Colors.red,
-                              unselectedLabelColor: HexColor("8A8989"),
-                              tabs: [
-                                Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Tab(text: 'Vegetables'),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Tab(text: 'Fruits'),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Tab(text: 'Herbs'),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Tab(text: 'Mushroom'),
-                                ),
-                              ],
+                    DefaultTabController(
+                      length: 4, // length of tabs
+                      initialIndex: 0,
+                      child: SizedBox(
+                        width: w(1),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            Container(
+                              height: 65,
+                              child: TabBar(
+                                isScrollable: true,
+                                indicatorSize: TabBarIndicatorSize.label,
+                                indicatorColor: Colors.red,
+                                labelColor: Colors.red,
+                                unselectedLabelColor: HexColor("8A8989"),
+                                tabs: [
+                                  Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Tab(text: 'Vegetables'),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Tab(text: 'Fruits'),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Tab(text: 'Herbs'),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Tab(text: 'Mushroom'),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          ConstrainedBox(
-                            // width: w(1),
-                            // height: 400,
-                            // decoration: BoxDecoration(
-                            //   border: Border.all(),
-                            // ),
-                            constraints: BoxConstraints(
-                              maxHeight: h(0.53),
-                              maxWidth: w(1),
-                            ),
-                            child: TabBarView(
-                              children: <Widget>[
-                                //For 1st tab
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 12.0, horizontal: 20),
-                                  child: ListView.builder(
-                                    itemCount: name.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 15.0),
-                                        child: item(
-                                          context,
-                                          onTap: () {
-                                            pushNewScreen(
-                                              context,
-                                              screen: EditItem(
-                                                name: name[index],
-                                              ),
-                                              withNavBar: false,
-                                            );
-                                          },
-                                          index: index,
-                                          itemInStock: isItemInStock[index],
-                                          image: image[index],
-                                          name: name[index],
-                                          price: price[index],
-                                          weight: weight[index].toString(),
-                                        ),
-                                      );
-                                    },
+                            ConstrainedBox(
+                              // width: w(1),
+                              // height: 400,
+                              // decoration: BoxDecoration(
+                              //   border: Border.all(),
+                              // ),
+                              constraints: BoxConstraints(
+                                maxHeight: h(0.53),
+                                maxWidth: w(1),
+                              ),
+                              child: TabBarView(
+                                children: <Widget>[
+                                  //For 1st tab
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0, horizontal: 20),
+                                    child: ListView.builder(
+                                      itemCount: name.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 15.0),
+                                          child: item(
+                                            context,
+                                            onTap: () {
+                                              pushNewScreen(
+                                                context,
+                                                screen: EditItem(
+                                                  name: name[index],
+                                                ),
+                                                withNavBar: false,
+                                              );
+                                            },
+                                            index: index,
+                                            itemInStock: isItemInStock[index],
+                                            image: image[index],
+                                            name: name[index],
+                                            price: price[index],
+                                            weight: weight[index].toString(),
+                                          ),
+                                        );
+                                      },
+                                    ),
                                   ),
-                                ),
-                                //For 2nd tab
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 12.0, horizontal: 20),
-                                  child: ListView(
-                                    children: [],
+                                  //For 2nd tab
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0, horizontal: 20),
+                                    child: ListView(
+                                      children: [],
+                                    ),
                                   ),
-                                ),
-                                //For 3rd tab
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 12.0, horizontal: 20),
-                                  child: ListView(
-                                    children: [],
+                                  //For 3rd tab
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0, horizontal: 20),
+                                    child: ListView(
+                                      children: [],
+                                    ),
                                   ),
-                                ),
-                                //For 4th tab
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 12.0, horizontal: 20),
-                                  child: ListView(
-                                    children: [],
+                                  //For 4th tab
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0, horizontal: 20),
+                                    child: ListView(
+                                      children: [],
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           )),
     );
   }

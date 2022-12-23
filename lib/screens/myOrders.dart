@@ -347,6 +347,9 @@ class _MyOrdersState extends State<MyOrders> {
             length: 2,
             child: Column(
               children: [
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
                   height: h(0.058),
                   decoration: BoxDecoration(

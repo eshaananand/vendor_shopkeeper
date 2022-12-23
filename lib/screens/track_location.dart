@@ -26,6 +26,9 @@ class _TrackLocationState extends State<TrackLocation> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 height: h(0.058),
                 decoration: BoxDecoration(
